@@ -1,0 +1,61 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout maki
+        uses: actions/checkout@v4
+        with:
+          repository: RandomLemon/maki
+          # 固定上游 commit，避免 maki 更新导致构建结果漂移；升级时修改此处。
+          ref: d2dec6fb018e9674b030aa20af8c4a3da02fecb4
+          path: .maki
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: ".maki -> target"
+
+      - name: Build site
+        working-directory: .maki
+        env:
+          MAKI_CONTENT_DIR: ${{ github.workspace }}/content
+          MAKI_BASE_URL: /${{ github.event.repository.name }}
+        run: cargo run --release
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .maki/dist/${{ github.event.repository.name }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
