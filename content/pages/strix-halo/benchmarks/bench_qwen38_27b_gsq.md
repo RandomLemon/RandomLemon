@@ -1,3 +1,10 @@
+---
+title: Qwen3.8-27B GSQ-RCO：MTP 开关基准测试（strix-llama.cpp）
+date: 2026-10-27
+tags: [ai, llm, amd, gfx1151, benchmark, mtp, qwen]
+summary: 在 AMD AI MAX+ 395 上对比 Qwen3.8-27B GSQ-RCO 的 MTP 开关，tg128 从 16.63 提升到 39.18 t/s（2.36×），接受率 97.9%。
+---
+
 # Qwen3.8-27B GSQ-RCO：MTP 开关基准测试（strix-llama.cpp）
 
 日期：2026-10-27

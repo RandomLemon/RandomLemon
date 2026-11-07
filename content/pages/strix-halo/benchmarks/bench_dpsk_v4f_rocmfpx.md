@@ -1,3 +1,10 @@
+---
+title: DeepSeek V4 Flash Vision Exp ROCmFPX：DSpark 开关基准测试（lucebox）
+date: 2026-10-27
+tags: [ai, llm, amd, gfx1151, benchmark, dspark, deepseek]
+summary: 在 AMD AI MAX+ 395 上对比 lucebox 的 DeepSeek V4 Flash Vision Exp ROCmFPX DSpark 开关，tg128 从 23.03 提升到 46.93 t/s（2.04×）。
+---
+
 # DeepSeek V4 Flash Vision Exp ROCmFPX：DSpark 开关基准测试（lucebox）
 
 日期：2026-10-27

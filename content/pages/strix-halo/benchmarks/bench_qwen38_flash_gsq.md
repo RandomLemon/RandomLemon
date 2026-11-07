@@ -1,3 +1,10 @@
+---
+title: Qwen3.8-Flash-Next GSQ-RCO：MTP 开关基准测试（strix-llama.cpp）
+date: 2026-10-27
+tags: [ai, llm, amd, gfx1151, benchmark, mtp, qwen]
+summary: 在 AMD AI MAX+ 395 上对比 Qwen3.8-Flash-Next GSQ-RCO 的 MTP 开关，tg128 从 25.94 提升到 45.18 t/s（1.74×），接受率 73.7%。
+---
+
 # Qwen3.8-Flash-Next GSQ-RCO：MTP 开关基准测试（strix-llama.cpp）
 
 日期：2026-10-27

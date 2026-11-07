@@ -1,3 +1,10 @@
+---
+title: Qwen3.6-35B-A3B ROCmFP4：MTP 开关基准测试（ROCmFPX）
+date: 2026-10-27
+tags: [ai, llm, amd, gfx1151, benchmark, mtp, qwen]
+summary: 在 AMD AI MAX+ 395 上对比 Qwen3.6-35B-A3B ROCmFP4 的 MTP 开关，tg128 从 63.46 提升到 112.36 t/s（1.77×），接受率 93.0%。
+---
+
 # Qwen3.6-35B-A3B ROCmFP4：MTP 开关基准测试（ROCmFPX）
 
 日期：2026-10-27

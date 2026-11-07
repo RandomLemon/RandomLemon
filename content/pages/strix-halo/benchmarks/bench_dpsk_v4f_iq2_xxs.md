@@ -1,3 +1,10 @@
+---
+title: DeepSeek V4 Flash Vision Exp IQ2_XXS：DSpark 开关基准测试（strix-llama.cpp）
+date: 2026-10-27
+tags: [ai, llm, amd, gfx1151, benchmark, dspark, deepseek]
+summary: 在 AMD AI MAX+ 395 上对比 DeepSeek V4 Flash Vision Exp IQ2_XXS 的 DSpark 开关，tg128 提升 20.7%，pp512 基本不变。
+---
+
 # DeepSeek V4 Flash Vision Exp IQ2_XXS：DSpark 开关基准测试（strix-llama.cpp）
 
 日期：2026-10-27
