@@ -41,13 +41,13 @@ jobs:
         working-directory: .maki
         env:
           MAKI_CONTENT_DIR: ${{ github.workspace }}/content
-          MAKI_BASE_URL: /
+          MAKI_BASE_URL: /${{ github.event.repository.name }}
         run: cargo run --release
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .maki/dist
+          path: .maki/dist/${{ github.event.repository.name }}
 
   deploy:
     needs: build
