@@ -25,8 +25,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: RandomLemon/maki
-          # 固定上游 commit，避免 maki 更新导致构建结果漂移；升级时修改此处。
-          ref: d2dec6fb018e9674b030aa20af8c4a3da02fecb4
+          # 跟踪上游默认分支最新提交。
+          ref: main
           path: .maki
 
       - name: Setup Rust
