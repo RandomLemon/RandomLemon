@@ -1,11 +1,24 @@
+---
+title: DeepSeek V4.1 Flash GSQ_RCO IQ2_XXS：双机测试（llama.cpp）
+date: 2026-10-27
+tags: [ai, llm, amd, gfx1151, benchmark, deepseek]
+summary: 在两台 AMD AI MAX+ 395 上测试运行 DeepSeek V4.1 Flash GSQ_RCO IQ2_XXS。
+---
+
 # 双机 deepseek v4.1 flash 初步测试
 
-- **服务类型**: llama.cpp `llama-server`
+- **服务类型**: llama.cpp `llama-server` v0.9.0 Vulkan
 - **模型**: `DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XXS`
 - **量化**: GSQ_RCO IQ2_XXS / 2.0625 bpw
 - **上下文窗口 (n_ctx)**: 262144
 - **并发槽位**: 4
 - **测试日期**: 2026-11-08
+
+## 部署基座
+
+`llama.cpp` v0.9.0, Vulkan backend, rpc with TCP
+
+两台机器使用usb4 thunderbolt网络连接，使用iperf3测速约为8.9Gbps。使用llama.cpp的rpc能力实现双机部署，tensor切分为1：1，每台机器约占用69-72GB显存，运行时观察到核显负载不高，温度也不到50度。雷电网络传输速度在3MB/s上行 1MB/s下行左右（Host端）。雷电网络连接将MTU设置为15000。
 
 ## 测试方法
 
