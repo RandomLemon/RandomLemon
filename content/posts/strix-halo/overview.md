@@ -86,6 +86,48 @@ sudo apt install amdrocm-core-dev10.1-gfx1151
 
 其实那里面的表格让你选系统和设备组合，你会发现没有gfx1151+debian13的组合，但是选`ALL+Compute+Debian13+apt`之后，安装的时候用tab补全一下就会发现其实有gfx1151的特定包的。这样可以省很多空间。
 
+验证：
+```
+$ amd-smi
+root@ai:~# amd-smi
++------------------------------------------------------------------------------+
+| AMD-SMI            27.1.0+7da43026                                           |
+| OS kernel Version: 6.17.13-21-pve                                            |
+| ROCm Version:      10.1.0                                                    |
+| VBIOS Version:     023.011.000.039.000001                                    |
+| Platform:          Linux Baremetal                                           |
+|-------------------------------------+----------------------------------------|
+| BDF                        GPU-Name | Mem-Uti   Temp   UEC       Power-Usage |
+| GPU  HIP-ID  OAM-ID  Partition-Mode | GFX-Uti    Fan               Mem-Usage |
+|=====================================+========================================|
+| 0000:c7:00.0 ...deon 8060S Graphics | N/A      35 °C   0            10/N/A W |
+|   0       0     N/A             N/A | 0 %        N/A         72926/122880 MB |
++-------------------------------------+----------------------------------------+
++------------------------------------------------------------------------------+
+| Processes:                                                                   |
+|  GPU      PID  Process Name     GTT_MEM  VRAM_MEM  MEM_USAGE   CU %     SDMA |
+|==============================================================================|
+|    0   662790  N/A                0.0 B   71.2 GB    71.2 GB    N/A     0 us |
++------------------------------------------------------------------------------+
+Process Name may require elevated permissions.
+```
+
 ### PVE 允许容器访问显卡
 
-TODO
+这里以ProxmoxVE9.2为例。
+
+1. 创建容器时选择无特权的容器、嵌套，剩下的按需求配置
+2. 在容器里运行以下命令，记住输出的GID
+```
+root@ai:~# getent group video 
+video:x:44:
+root@ai:~# getent group render 
+render:x:992:
+```
+3. 容器-资源-新增-设备直通，分别直通路径
+    - `/dev/dri/renderD128`-CT中的GID`992`
+    - `/dev/dri/card1`-CT中的GID`44`
+    - `/dev/kfd`-CT中的GID`992`
+    这两种GID分别对应上面的`render`和`video`用户组。这样PVE可以自动将设备正确映射进无特权容器，非常方便并且安全。
+
+4. 重新启动容器即可。在容器内按照上述方法安装ROCm即可。
