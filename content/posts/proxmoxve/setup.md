@@ -1,3 +1,10 @@
+---
+title: Proxmox VE 配置记录
+date: 2026-11-12
+tags: [server, pve]
+summary: 记录PVE9.2的分区、网络、设备直通等配置方法。
+---
+
 # Proxmox VE 配置记录
 
 本文以PVE9.2为例，记录配置过程。
