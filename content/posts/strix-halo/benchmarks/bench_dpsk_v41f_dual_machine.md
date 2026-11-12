@@ -1,6 +1,6 @@
 ---
 title: DeepSeek V4.1 Flash GSQ_RCO IQ2_XXS：双机测试（llama.cpp）
-date: 2026-10-27
+date: 2026-11-08
 tags: [ai, llm, amd, gfx1151, benchmark, deepseek]
 summary: 在两台 AMD AI MAX+ 395 上测试运行 DeepSeek V4.1 Flash GSQ_RCO IQ2_XXS。
 ---

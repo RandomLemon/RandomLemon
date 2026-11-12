@@ -15,7 +15,7 @@ The website of NMO(NJU Minecraft Organization), mostly written in hand.
 
 #### maki
 
-This blog website. Written in Rust, generates a static blog with markdown.  
+This blog website. Written with Rust and Leptos, it generates a static blog with markdown.  
 [LINK](https://github.com/RandomLemon/maki) | [This Blog](https://github.com/RandomLemon/RandomLemon)
 
 #### kei
@@ -32,6 +32,11 @@ An agent design for multiple users. Optimised for local-llm, memory, RAG, mcp an
 
 Multiple monitor manager currently for niri. Since I use NixOS, taking meetings and connect the projectors or screens become trouble: I have no time to declare configs for the one-time connections. So I made the GUI panel with golang.  
 [LINK](https://github.com/RandomLemon/midori)
+
+#### yuuka [WIP]
+
+An inference engine for AMD Strix Halo devices(gfx1151), witten in golang. I'm currently studying about AI infra by implementing an inference engine.  
+[LINK](https://github.com/RandomLemon/yuuka)
 
 #### miscs
 
