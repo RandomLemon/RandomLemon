@@ -48,7 +48,7 @@ sudo apt install btrfsmaintenance
 
 鉴于PVE本身的网络管理功能较少，我使用OpenWrt容器来接管整个PVE的网络。
 
-![Network Architecture](./networking.png)
+![网络架构](./networking.png)
 
 此时通过`eth0`连接到的是OpenWrt，PVE在OpenWrt下的LAN网段，需要在owrt上配置端口转发才可以访问。这样OpenWrt可以起到防火墙的作用，同时你可以自由添加其他网络功能。`eth1`这里没有画出功能，你可以将它接入`vmbr1`从而接入owrt的LAN网段，也可以直接交给某个容器接管，也可以留着做pve的备用网口，如果只有单网口也不影响这个架构，十分灵活。
 
